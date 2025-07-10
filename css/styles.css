@@ -1,0 +1,58 @@
+/* styles.css */
+
+/*
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ * Variables: Color Scheme and size
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ */
+
+:root {
+  /* ~~~~~ Color Scheme Variables */
+  --ex-body-background-color: #4CA0B5;
+  --ex-heading-color:         #FDFFFC;
+  --ex-form-background-color: white;
+  --ex-form-text-color:       #000100;
+
+  /* ~~~~~ Size Variables */
+  --ex-container-items-gap:   2em;
+}
+
+/*
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ * Element CSS Selectors
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ * Use Case: Color, size
+ */
+
+body {
+  background-color: var(--ex-body-background-color);
+}
+
+h1 {
+  color: var(--ex-heading-color);
+}
+
+form {
+  background-color: var(--ex-form-background-color);
+  color:            var(--ex-form-text-color);
+}
+
+/*
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ * Class CSS Selectors
+ * ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ * Use Cases: Layout (mainly), Size...
+ */
+
+.flex-container {
+  display:        flex;
+  flex-direction: row-reverse; /* Flex items are laid out from right to left */
+  flex-wrap:      wrap;        /* Wrap flex items that do not fit on a row */
+  gap:            var(--ex-container-items-gap); /* Add a gutter between flx items */
+
+}
+
+.flex-item {
+  /* 2-column horizontal layout where each flex item takes ~50% of the container width */
+  flex: 50% - calc(var(--ex-container-items-gap) / 2);
+}
