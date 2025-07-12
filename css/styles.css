@@ -102,19 +102,30 @@ section {
   grid-template-rows:    auto;
   justify-items:         start; /* By default grid items are left aligned */
 
+  padding: 1em;
+
   & > * {
     /* By default grid items take the whole width of the form */
     grid-column:         1 / -1;
   }
 
-  & > input {
-    margin-bottom:      0.5rem; /* Add some space below  each form field */
+  & > label {
+    margin-top:      0.5rem; /* Add some space above each form field */
   }
 
-  & > legend {
+  & > .full-name {       /* fieldset with first-name and last-name fields */
+    display:             flex;
+    flex-direction:      flex-start;
+
+    padding:             0;
+    border:              none;
+  }
+
+  & > legend {           /* Form title */
     justify-self:        center;
 
     border-bottom:       solid;
+    border-color:        #DEDEDE;
     width:               100%; /* The horizontal line (below) takes the whole width of the form */
 
     font-weight:         bolder;
@@ -122,11 +133,11 @@ section {
     text-transform:      uppercase;
   }
 
-  & > .login   {
+  & > .login   {         /* Paragraph with login link */
     justify-self:        center;
   }
 
-  &>.signup {
+  & > .signup {          /* Signup button */
     justify-self:        center;
 
     border-radius:       10%;  /* Rounded corners */
