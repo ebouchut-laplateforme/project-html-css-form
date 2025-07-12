@@ -14,7 +14,8 @@
   --ex-form-text-color:       #000100;
 
   /* ~~~~~ Size Variables */
-  --ex-container-items-gap:   2em;
+  --ex-container-items-gap:   0.2em;
+
 }
 
 /*
@@ -25,11 +26,30 @@
  */
 
 body {
+  margin:           0px; /* Reset margin */
+
+  height:           100vh;
+  width:            100vh;
+
   background-color: var(--ex-body-background-color);
 }
 
 h1 {
-  color: var(--ex-heading-color);
+  color:            var(--ex-heading-color);
+
+  text-align:     center;
+
+  /*
+   *INFO: How do I display one word per line?
+   * - HTML: Add a newline in between each word in the HTML tag.
+   * - CSS: Replace each newline with a line break using this rule
+   */
+  white-space:    pre-line;
+
+  &>span {
+    font-size:   smaller;
+    font-weight: normal;
+  }
 }
 
 form {
@@ -37,22 +57,83 @@ form {
   color:            var(--ex-form-text-color);
 }
 
+section {
+  background-color: #CCC;
+}
+
 /*
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~
  * Class CSS Selectors
  * ~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * Use Cases: Layout (mainly), Size...
+ * Use Cases: Layout
  */
 
-.flex-container {
-  display:        flex;
-  flex-direction: row-reverse; /* Flex items are laid out from right to left */
-  flex-wrap:      wrap;        /* Wrap flex items that do not fit on a row */
-  gap:            var(--ex-container-items-gap); /* Add a gutter between flx items */
-
+.center {
+  margin: auto;
 }
 
-.flex-item {
-  /* 2-column horizontal layout where each flex item takes ~50% of the container width */
-  flex: 50% - calc(var(--ex-container-items-gap) / 2);
+.flex-container-body {
+  display:         flex;
+  /* The flex items are laid out from right to left (main(section > form) ← header(h1)  */
+  flex-direction:  row-reverse;
+  flex-wrap:       wrap;
+  justify-items:   center; /* Center each flex item horizontally */
+  align-items:     center; /* Center each flex item vertically */
+  gap:             var(--ex-container-items-gap); /* Add a gutter between the flex items */
+
+  .flex-item-body:first-child {
+    /* header(h1) takes 30% of its container width (body),
+     * minus the width of the gutter around it
+     */
+    flex:            calc(30% - (var(--ex-container-items-gap) / 2));
+  }
+
+  .flex-item-body:nth-child(2) {
+    /* main(section > form) takes 70% of its container width (body),
+     * minus the width of the gutter around it
+     */
+    flex:            calc(70% - (var(--ex-container-items-gap) / 2));
+  }
+}
+
+#grid-container-form {
+  display:               grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows:    auto;
+  justify-items:         start; /* By default grid items are left aligned */
+
+  & > * {
+    /* By default grid items take the whole width of the form */
+    grid-column:         1 / -1;
+  }
+
+  & > input {
+    margin-bottom:      0.5rem; /* Add some space below  each form field */
+  }
+
+  & > legend {
+    justify-self:        center;
+
+    border-bottom:       solid;
+    width:               100%; /* The horizontal line (below) takes the whole width of the form */
+
+    font-weight:         bolder;
+    text-align:          center;
+    text-transform:      uppercase;
+  }
+
+  & > .login   {
+    justify-self:        center;
+  }
+
+  &>.signup {
+    justify-self:        center;
+
+    border-radius:       10%;  /* Rounded corners */
+    border-style:        none; /* Remove the outset at the bottom and on the right side */
+    border-color:        var(--ex-body-background-color);
+
+    background-color:    var(--ex-body-background-color);
+    color:               var(--ex-heading-color);
+  }
 }
