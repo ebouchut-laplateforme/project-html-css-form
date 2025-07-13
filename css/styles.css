@@ -69,7 +69,7 @@ section {
  */
 
 .center {
-  margin: auto;
+  margin: auto;  /* Center horizontally */
 }
 
 .flex-container-body {
@@ -98,7 +98,7 @@ section {
 
 #grid-container-form {
   display:               grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, 1fr); /* 4 columns of equal size */
   grid-template-rows:    auto;
   justify-items:         start; /* By default grid items are left aligned */
 
@@ -109,13 +109,15 @@ section {
     grid-column:         1 / -1;
   }
 
-  & > label {
+  &  label {
     margin-top:      0.5rem; /* Add some space above each form field */
   }
 
   & > .full-name {       /* fieldset with first-name and last-name fields */
     display:             flex;
     flex-direction:      flex-start;
+    flex-wrap:           wrap;
+    gap:                 0.1em;
 
     padding:             0;
     border:              none;
@@ -126,25 +128,25 @@ section {
 
     border-bottom:       solid;
     border-color:        #DEDEDE;
-    width:               100%; /* The horizontal line (below) takes the whole width of the form */
+    width:               100%; /* Workaround for the horizontal line (border-bottom) to take the whole width of the form */
 
     font-weight:         bolder;
     text-align:          center;
     text-transform:      uppercase;
   }
 
-  & > .login   {         /* Paragraph with login link */
-    justify-self:        center;
-  }
-
   & > .signup {          /* Signup button */
     justify-self:        center;
 
     border-radius:       10%;  /* Rounded corners */
-    border-style:        none; /* Remove the outset at the bottom and on the right side */
+    border-style:        none; /* Remove the outset (shadow) at the bottom and on the right side */
     border-color:        var(--ex-body-background-color);
 
     background-color:    var(--ex-body-background-color);
     color:               var(--ex-heading-color);
+  }
+
+  & > .login   {         /* contains the login link */
+    justify-self:        center;
   }
 }
