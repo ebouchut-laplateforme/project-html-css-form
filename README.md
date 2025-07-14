@@ -22,7 +22,7 @@ I use a mix of CSS Flexbox and grid layout:
 - Flexbox to lay out:
     -  The topmost items from right to left (heading 1, and form)
     -  The first name and last name fields in the form from left to right
-- Grid layout for the the form
+- Grid layout for the form
 
 ### 2-Column Layout using Flexbox
 
@@ -62,7 +62,7 @@ flowchart TB
   ```
 - [CSS](https://github.com/ebouchut-laplateforme/project-html-css-form/blob/de9aa0f95999fc959570fe675cc84a0cfab4aefc/css/styles.css#L76-L78)
   ```css
-  .flex-container-body { /* body */*
+  .flex-container-body { /* body */
       display:        flex;
       flex-direction: row-reverse;
   }
@@ -121,9 +121,9 @@ I use [nested CSS rules](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_ne
 ![Form Grid Layout](img/form-grid.png)
 
 - The form:
-- is laid out using a **CSS Grid** (`display: grid;`)
- - has **4 columns** with a proportional fraction of the total width available (`grid-template-columns: repeat(4, 1fr);`). This means that each column takes one fourth of the available width in the form.
-- **Grid items** (direct children of the container (form)) are **left aligned by default** (`justify-items: start;`) (see the purple left arrow in the grid snapshot above).
+    - is laid out using a **CSS Grid** (`display: grid;`)
+     - has **4 columns** with a proportional fraction of the total width available (`grid-template-columns: repeat(4, 1fr);`). This means that each column takes one fourth of the available width in the form.
+    - **Grid items** (direct children of the container (form)) are **left aligned by default** (`justify-items: start;`) (see the purple left arrow in the grid snapshot above).
 
 ```css
 #grid-container-form {
@@ -139,7 +139,7 @@ I use [nested CSS rules](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_ne
 - 3 grid items are centered (see the red arrows in the grid snapshot above):
     - The form title (`<legend>`
     - The `Sign Up` submit button/field
-    - The paragraph with a Login link
+    - The paragraph with a login link
 
   ```css
   #grid-container-form {
@@ -174,6 +174,7 @@ I use [nested CSS rules](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_ne
     & > legend {
       /* ... */
     }
+  }
   ```
   are equivalent to their non-nested form:
   ```css
@@ -183,7 +184,8 @@ I use [nested CSS rules](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_ne
 
   #grid-container-form > legend {
      /* ... */
-  }`
+  }
+  ```
 
 ### Flexbox Layout for the Full Name
 
