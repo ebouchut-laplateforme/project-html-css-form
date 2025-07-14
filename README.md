@@ -6,7 +6,7 @@ In this lab exercise we will create a sign-up form using HTML and CSS.
 
 ![Form Mockup](img/form-mockup.png)
 
-The form is not connected to a backend to processes sign-ups.
+The form is not connected to a backend to processes sign-ups or logins.
 
 ## Demo
 
@@ -125,16 +125,16 @@ I use [nested CSS rules](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_ne
      - has **4 columns** with a proportional fraction of the total width available (`grid-template-columns: repeat(4, 1fr);`). This means that each column takes one fourth of the available width in the form.
     - **Grid items** (direct children of the container (form)) are **left aligned by default** (`justify-items: start;`) (see the purple left arrow in the grid snapshot above).
 
-```css
-#grid-container-form {
-  display:               grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 columns of equal size */
-  grid-template-rows:    auto;
-  justify-items:         start; /* By default grid items are left aligned */
-
-  /* ... */
-}
-````
+  ```css
+  #grid-container-form {
+    display:               grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columns of equal size */
+    grid-template-rows:    auto;
+    justify-items:         start; /* By default grid items are left aligned */
+  
+    /* ... */
+  }
+  ````
 
 - 3 grid items are centered (see the red arrows in the grid snapshot above):
     - The form title (`<legend>`
