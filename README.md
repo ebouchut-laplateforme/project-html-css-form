@@ -6,7 +6,7 @@ In this lab exercise we will create a sign-up form using HTML and CSS.
 
 ![Form Mockup](img/form-mockup.png)
 
-The form is not connected to a backend to processes sign-ups or logins.
+The form is not connected to a backend to process sign-ups or logins.
 
 ## Demo
 
@@ -14,7 +14,7 @@ The demo website is live here
 
 https://ebouchut-laplateforme.github.io/project-html-css-form/
 
-It is published automatically each time we push to the `main` branch.
+It is published automatically each time we push the `main` branch.
 
 ## Layout
 
