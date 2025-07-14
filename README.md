@@ -195,25 +195,6 @@ This is why I enclosed them in a `<fieldset class="full-name">` that acts as a f
 
 ![Full Name](img/full-name-flexbox.png)
 
-[CSS](https://github.com/ebouchut-laplateforme/project-html-css-form/blob/de9aa0f95999fc959570fe675cc84a0cfab4aefc/css/styles.css#L116-L118)
-  ```css
-  #grid-container-form {
-    display:               grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows:    auto;
-    justify-items:         start; /* By default grid items are left aligned */
-
-    padding: 1em;
-
-    /* ... */
-
-    & > .full-name {       /* fieldset is a flex container with first-name and last-name  */
-      display:             flex;
-      flex-direction:      flex-start;
-      flex-wrap:           wrap;
-      /* ... */
-    }
-  ```
 - [HTML](https://github.com/ebouchut-laplateforme/project-html-css-form/blob/de9aa0f95999fc959570fe675cc84a0cfab4aefc/index.html#L24-L33)
   I used 2 dreaded `<div>`s below the `<fieldset>` to act as flex items. First they have no semantic meaning and I have used before all the semantic tags available to me ;-)!
   ```html
@@ -232,4 +213,16 @@ This is why I enclosed them in a `<fieldset class="full-name">` that acts as a f
             <input type="text" id="last-name" name="last-name">
           </div>
         </fieldset>
+  ```
+- [CSS](https://github.com/ebouchut-laplateforme/project-html-css-form/blob/de9aa0f95999fc959570fe675cc84a0cfab4aefc/css/styles.css#L116-L118)
+  ```css
+  #grid-container-form {
+    /* ... */
+
+    & > .full-name {       /* fieldset is a flex container with first-name and last-name  */
+      display:             flex;
+      flex-direction:      flex-start;
+      flex-wrap:           wrap;
+      /* ... */
+    }
   ```
