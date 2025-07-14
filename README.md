@@ -213,6 +213,11 @@ This is why I enclosed them in a `<fieldset class="full-name">` that acts as a f
             <input type="text" id="last-name" name="last-name">
           </div>
         </fieldset>
+
+        <!-- ... -->
+      </form>
+    </section>
+  </main>
   ```
 - [CSS](https://github.com/ebouchut-laplateforme/project-html-css-form/blob/de9aa0f95999fc959570fe675cc84a0cfab4aefc/css/styles.css#L116-L118)
   ```css
@@ -225,4 +230,5 @@ This is why I enclosed them in a `<fieldset class="full-name">` that acts as a f
       flex-wrap:           wrap;
       /* ... */
     }
+  }
   ```
