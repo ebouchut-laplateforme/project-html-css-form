@@ -37,7 +37,7 @@ body {
 h1 {
   color:            var(--ex-heading-color);
 
-  text-align:     center;
+  text-align:     left;
 
   /*
    *INFO: How do I display one word per line?
@@ -96,7 +96,7 @@ section {
   }
 }
 
-#grid-container-form {
+#grid-container-form {#grid-container-form {
   display:               grid;
   grid-template-columns: repeat(4, 1fr); /* 4 columns of equal size */
   grid-template-rows:    auto;
@@ -119,7 +119,60 @@ section {
     flex-wrap:           wrap;
     gap:                 0.1em;
 
-    padding:             0;
+    padding:             0.4em 0;
+    border:              none;
+  }
+
+  & > legend {           /* Form title */
+    justify-self:        center;
+
+    border-bottom:       solid;
+    border-color:        #DEDEDE;
+    width:               100%; /* Workaround for the horizontal line (border-bottom) to take the whole width of the form */
+
+    font-weight:         bolder;
+    text-align:          center;
+    text-transform:      uppercase;
+  }
+
+  & > .signup {          /* Signup button */
+    justify-self:        center;
+
+    border-radius:       10%;  /* Rounded corners */
+    border-style:        none; /* Remove the outset (shadow) at the bottom and on the right side */
+    border-color:        var(--ex-body-background-color);
+
+    background-color:    var(--ex-body-background-color);
+    color:               var(--ex-heading-color);
+  }
+
+  & > .login   {         /* contains the login link */
+    justify-self:        center;
+  }
+}
+  display:               grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 columns of equal size */
+  grid-template-rows:    auto;
+  justify-items:         start; /* By default grid items are left aligned */
+
+  padding: 1em;
+
+  & > * {
+    /* By default grid items take the whole width of the form */
+    grid-column:         1 / -1;
+  }
+
+  &  label {
+    margin-top:      0.5rem; /* Add some space above each form field */
+  }
+
+  & > .full-name {       /* fieldset with first-name and last-name fields */
+    display:             flex;
+    flex-direction:      flex-start;
+    flex-wrap:           wrap;
+    gap:                 0.1em;
+
+    padding:             0.4em 0;
     border:              none;
   }
 

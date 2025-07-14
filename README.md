@@ -88,7 +88,7 @@ The 2 flex item (`<header>`, `<main>`) take [a share of the available width](htt
   }
   ```
 
-I use [nested CSS rules](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_nesting/Using_CSS_nesting) to target flex items within their container, improving readability by keeping related rules close together and in context.
+I use [nested CSS rules](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_nesting/Using_CSS_nesting) to target flex items within their container, improving readability by keeping related rules close together and in context. For a real word website, I should have also provided the corresponding non-nested CSS rules to take into account the 🦕-browsers, but I chose not to for this lab.
 
 ```css
 .flex-container-body {
@@ -118,13 +118,80 @@ I use [nested CSS rules](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_ne
 
 ### Grid Layout for the Form
 
-TODO:
+![Form Grid Layout](img/form-grid.png)
+
+- The form:
+- is laid out using a **CSS Grid** (`display: grid;`)
+ - has **4 columns** with a proportional fraction of the total width available (`grid-template-columns: repeat(4, 1fr);`). This means that each column takes one fourth of the available width in the form.
+- **Grid items** (direct children of the container (form)) are **left aligned by default** (`justify-items: start;`) (see the purple left arrow in the grid snapshot above).
+
+```css
+#grid-container-form {
+  display:               grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 columns of equal size */
+  grid-template-rows:    auto;
+  justify-items:         start; /* By default grid items are left aligned */
+
+  /* ... */
+}
+````
+
+- 3 grid items are centered (see the red arrows in the grid snapshot above):
+    - The form title (`<legend>`
+    - The `Sign Up` submit button/field
+    - The paragraph with a Login link
+
+  ```css
+  #grid-container-form {
+    /* ... */
+
+    & > * {
+      /* By default grid items take the whole width of the form */
+      grid-column:         1 / -1; /* 1 denotes the first and -1 the last column lines */
+    }
+
+    & > legend {           /* Form title */
+      justify-self:        center;
+      /* ... */
+    }
+
+    & > .signup {          /* Signup button */
+      justify-self:        center;
+      /* ... */*
+    }
+
+    & > .login   {         /* paragraph with a login link */
+      justify-self:        center;
+    }
+  }
+  ```
+  FYI: The `&` notation denotes the container the CSS rule is nested within.  
+  For instance, these nested CSS rules:
+  ```css
+  #grid-container-form {
+    /* ... */
+
+    & > legend {
+      /* ... */
+    }
+  ```
+  are equivalent to their non-nested form:
+  ```css
+  #grid-container-form {
+        /* ... */
+  }
+
+  #grid-container-form > legend {
+     /* ... */
+  }`
 
 ### Flexbox Layout for the Full Name
 
-The **first name** and **last name** form fields (that I refer to as he full name) should be displayed next to each other from left to right.
+I refer to the **first name** and **last name** form fields as the full name.
+They should be displayed next to each other from left to right.
+This is why I enclosed them in a `<fieldset class="full-name">` that acts as a flexbox container.
 
-![Full Name](./img/full-name-flexbox.png)
+![Full Name](img/full-name-flexbox.png)
 
 [CSS](https://github.com/ebouchut-laplateforme/project-html-css-form/blob/de9aa0f95999fc959570fe675cc84a0cfab4aefc/css/styles.css#L116-L118)
   ```css
@@ -133,19 +200,20 @@ The **first name** and **last name** form fields (that I refer to as he full nam
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows:    auto;
     justify-items:         start; /* By default grid items are left aligned */
-  
+
     padding: 1em;
-  
+
     /* ... */
-  
-    & > .full-name {       /* fieldset with first-name and last-name fields */
+
+    & > .full-name {       /* fieldset is a flex container with first-name and last-name  */
       display:             flex;
       flex-direction:      flex-start;
+      flex-wrap:           wrap;
       /* ... */
     }
   ```
 - [HTML](https://github.com/ebouchut-laplateforme/project-html-css-form/blob/de9aa0f95999fc959570fe675cc84a0cfab4aefc/index.html#L24-L33)
-  I used the dreaded `<div>`s here to act as layout containers. First they have no semantic meaning and I have used before all the semantic tags available to me ;-)!
+  I used 2 dreaded `<div>`s below the `<fieldset>` to act as flex items. First they have no semantic meaning and I have used before all the semantic tags available to me ;-)!
   ```html
   <main class="flex-item-body">
     <section>
